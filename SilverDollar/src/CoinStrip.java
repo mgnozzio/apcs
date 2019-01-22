@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Random;
 public class CoinStrip {
 
-	ArrayList<Integer> board;
-	int numCoins;
+	private ArrayList<Integer> board;
+	private int numCoins;
 	
 	/* The Coin strip constuctor should accept
 	 * a parameter specifying the number of coins
@@ -68,9 +68,11 @@ public class CoinStrip {
 	 * a new one.  (Hint: use set rather than remove)
 	 */
 	public void move(int coin, int numSpaces) {
-		int oldIndex = board.indexOf(coin);
-		board.set(oldIndex-numSpaces, coin);
-		board.set(oldIndex,0);
+		if(isLegal(coin,numSpaces)) {
+			int oldIndex = board.indexOf(coin);
+			board.set(oldIndex-numSpaces, coin);
+			board.set(oldIndex,0);
+		}
 	}
 	
 	/* This method renders the board as a string

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class HumanPlayer {
-	Scanner s;
-	int num;
+	private Scanner s;
+	private int num;
 	
 	/* The HumanPlayer constructor only needs to
 	 * store the information that is passed into it.
@@ -40,6 +40,6 @@ public class HumanPlayer {
 	 * For example: "Player 1"
 	 */
 	public String toString() {
-		return "Player " + num;
+		return "Player " + this.num;
 	}
 }
