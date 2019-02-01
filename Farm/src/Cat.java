@@ -8,7 +8,7 @@ public class Cat extends Animal {
 	public String makesSound() { return "meow"; }
 	
 	public static void main(String[] args) {
-		Animal a = new Cat();
+		Animal a = new Pig(false, true);
 		System.out.println("This animal says " + a.makesSound());
 		if(a.isCarnivorous()) {
 			System.out.println("The animal is carnivorous.");
