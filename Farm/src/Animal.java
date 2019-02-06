@@ -7,7 +7,7 @@ public abstract class Animal implements FarmObject {
 		this.carnivorous = carnivorous;
 	}
 
-	public Animal() {
+	public Animal(String name) {
 		this.carnivorous = false;
 	}
 	
