@@ -10,7 +10,7 @@ public class BetterArrayList implements APList{
 	private Object[] data;
 	private int size;
 	
-	/* We override the default constructor to start off with 
+	/* We implement the default constructor to start off with 
 	 * an array of size 8.  We also need to initialize size.
 	 */
 	public BetterArrayList() {
