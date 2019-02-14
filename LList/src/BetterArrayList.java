@@ -2,19 +2,19 @@
  * class wherein we double the size of the array whenever we need
  * to increase its size.  We also never shrink the array.  
  */
-public class BetterArrayList<T> implements APList<T>{
+public class BetterArrayList<T> extends AbstractArrayList<T> implements APList<T>{
 
 	/* We could previously get the size from the array, but
 	 * now we need to track it manually.
 	 */
-	private T[] data;
+	protected Object[] data;
 	private int size;
 	
 	/* We implement the default constructor to start off with 
 	 * an array of size 8.  We also need to initialize size.
 	 */
 	public BetterArrayList() {
-		data = (T[])new Object[8];
+		data = new Object[8];
 		size = 0;
 	}
 	
@@ -25,13 +25,13 @@ public class BetterArrayList<T> implements APList<T>{
 	
 	public T get(int index) {
 		if(size == 0 || index < 0 || index >= size) throw new IndexOutOfBoundsException();
-		return data[index];
+		return (T)data[index];
 	}
 	
 	public void add(T o) {
 		if(size == data.length) {
 			/* Double the size of our array before proceeding */
-			T[] newList = (T[]) new Object[size*2];
+			Object[] newList = new Object[size*2];
 			for(int i=0; i<size; i++) {
 				newList[i] = data[i];
 			}
@@ -42,7 +42,7 @@ public class BetterArrayList<T> implements APList<T>{
 	}
 	
 	public T remove(int index) {
-		T toRemove = data[index];
+		T toRemove = (T)(data[index]);
 		/* Shift everything down one, overwriting the removed object */
 		for(int i=index; i<size-1; i++) {
 				data[i] = data[i+1];
@@ -51,6 +51,10 @@ public class BetterArrayList<T> implements APList<T>{
 		data[size-1] = null;
 		size = size - 1;
 		return toRemove;
+	}
+	
+	public int size() {
+		return size;
 	}
 	
 }

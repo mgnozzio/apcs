@@ -1,5 +1,5 @@
 
-public class GArrayList<T> implements APList<T> {
+public class GArrayList<T> extends AbstractArrayList<T> implements APList<T> {
 
 	/* The GArrayList class is a naive implementation
 	 * of the APList interface that uses arrays.  The underlying
@@ -8,20 +8,18 @@ public class GArrayList<T> implements APList<T> {
 	 * fast.  
 	 */
 	
-	private T[] data;
-	
 	/* Our default constructor initializes our private
 	 * instance variable.  
 	 */
 	public GArrayList() {
-		data = (T[]) new Object[0];
+		data = new Object[0];
 	}
 	
 	/* To get an element, we simply look at the specified
 	 * location in our data.  
 	 */
 	public T get(int index) {
-		return data[index];
+		return (T)data[index];
 	}
 	
 	/* Resizing our underlying array is painful. We have to copy
@@ -30,7 +28,7 @@ public class GArrayList<T> implements APList<T> {
 	 */
 	
 	public void add(T o) {
-		T[] newList = (T[]) new Object[data.length + 1];
+		Object[] newList = new Object[data.length + 1];
 		for(int i=0; i<data.length; i++) {
 			newList[i] = data[i];
 		}
@@ -39,8 +37,8 @@ public class GArrayList<T> implements APList<T> {
 	}
 	
 	public T remove(int index) {
-		T o = data[index];
-		T[] newList = (T[]) new Object[data.length-1];
+		T o = (T) (data[index]);
+		Object[] newList = new Object[data.length-1];
 		for(int i=0; i<index; i++) {
 			newList[i] = data[i];
 		}
@@ -50,5 +48,7 @@ public class GArrayList<T> implements APList<T> {
 		data = newList;
 		return o;
 	}
+	
+	public int size() { return data.length; };
 	
 }

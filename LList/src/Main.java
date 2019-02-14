@@ -83,7 +83,7 @@ public class Main {
 		System.out.println();
 	}
 	
-	public static final int NUM = 200000;
+	public static final int NUM = 50000;
 	
 	public static long timeAddToList(APList<Integer> l) {
 		long t1 = Instant.now().getEpochSecond();

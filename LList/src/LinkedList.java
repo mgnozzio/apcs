@@ -12,9 +12,9 @@ public class LinkedList<T> implements APList<T> {
 	 * node of the list.  We also keep track of the size
 	 * of the list.
 	 */
-	private Node<T> first;
-	private Node<T> last;
-	private int size;
+	protected Node<T> first;
+	protected Node<T> last;
+	protected int size;
 	
 	public LinkedList() {
 		/* To create an empty, we have nothing to do.
@@ -62,7 +62,7 @@ public class LinkedList<T> implements APList<T> {
 	 * of private so that subclasses can use this helper method also. 
 	 */
 	protected Node<T> getN(int index) {
-		Node n = first;
+		Node<T> n = first;
 		for(int i=0; i<index; i++) {
 			if(n.next() == null) throw new IndexOutOfBoundsException();
 			else n = n.next();
@@ -131,9 +131,22 @@ public class LinkedList<T> implements APList<T> {
 		return last;
 	}
 	
-	/* Although not required by the APList interface, we provide
-	 * a size accessor method for the benefit of users (and subclasses)
+	/* The size method tells us the number of ndoes in the list.
 	 */
 	public int size() { return size; }
+	
+	/* The indexOf method does a sequential / linear search
+	 * of the data
+	 */
+	public int indexOf(T o) {
+		Node<T> n = getN(0);
+		int i = 0;
+		while(!o.equals(n.getInfo())) {
+			if(n.next() == null) return -1;
+			n=n.next();
+			i++;
+		}
+		return i;
+	}
 	
 }

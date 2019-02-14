@@ -11,4 +11,6 @@ public interface APList<T> {
 	public void add(T o);
 	public T get(int index);
 	public T remove(int index);
+	public int indexOf(T o);
+	public int size();
 }
