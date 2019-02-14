@@ -79,10 +79,11 @@ public class Main {
 		System.out.println("For LinkedList, the remove test took " + timeRemoveFrom(ll) + " seconds.");
 		System.out.println("For DoublyLinkedList, the remove test took " + timeRemoveFrom(dl) + " seconds.");
 		System.out.println("For BetterArrayList, the remove test took " + timeRemoveFrom(ba) + " seconds.");
-		
+
+		System.out.println();
 	}
 	
-	public static final int NUM = 90000;
+	public static final int NUM = 200000;
 	
 	public static long timeAddToList(APList l) {
 		long t1 = Instant.now().getEpochSecond();
@@ -105,7 +106,7 @@ public class Main {
 	public static long timeRemoveFrom(APList l) {
 		long t1 = Instant.now().getEpochSecond();
 		Random r = new Random();
-		for(int i = NUM-1; i>0; i--) {
+		for(int i = NUM-1; i>NUM/2; i--) {
 			// For performance benchmarking, we remove a random element of the list.  
 			l.remove(r.nextInt(i));
 		}
