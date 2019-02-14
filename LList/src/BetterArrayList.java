@@ -37,7 +37,7 @@ public class BetterArrayList implements APList{
 			}
 			data = newList;
 		}
-		data[size] = 0;
+		data[size] = o;
 		size = size + 1;
 	}
 	
