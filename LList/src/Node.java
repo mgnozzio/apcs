@@ -1,5 +1,5 @@
 
-public class Node {
+public class Node<T> {
 	/* The node class is the basic building block of a 
 	 * linked list.  It stores arbitrary information 
 	 * and has a pointer that allows us to chain to another
@@ -9,10 +9,10 @@ public class Node {
 	/* We have two instance variables: the info we need to store
 	 * and a pointer to another node.
 	 */
-	private Object info;
-	private Node next;
+	private T info;
+	private Node<T> next;
 	
-	public Node(Object info) {
+	public Node(T info) {
 		/* We use the keyword "this" to disambiguate
 		 * a local variable or parameter from an instance
 		 * variable. 
@@ -28,20 +28,20 @@ public class Node {
 	/* This is a mutator method that updates the reference
 	 * to another node. 
 	 */
-	public void setNext(Node n) {
+	public void setNext(Node<T> n) {
 		this.next = n;
 	}
 	
 	/* This is an accessor method that grabs the info stored
 	 * in the node. 
 	 */
-	public Object getInfo() {
+	public T getInfo() {
 		return this.info;
 	}
 	
 	/* Finally, we have an accessor method to get the next node.
 	 */
-	public Node next() {
+	public Node<T> next() {
 		return this.next;
 	}
 }

@@ -1,5 +1,5 @@
 
-public class GArrayList implements APList {
+public class GArrayList<T> implements APList<T> {
 
 	/* The GArrayList class is a naive implementation
 	 * of the APList interface that uses arrays.  The underlying
@@ -8,19 +8,19 @@ public class GArrayList implements APList {
 	 * fast.  
 	 */
 	
-	private Object[] data;
+	private T[] data;
 	
 	/* Our default constructor initializes our private
 	 * instance variable.  
 	 */
 	public GArrayList() {
-		data = new Object[0];
+		data = (T[]) new Object[0];
 	}
 	
 	/* To get an element, we simply look at the specified
 	 * location in our data.  
 	 */
-	public Object get(int index) {
+	public T get(int index) {
 		return data[index];
 	}
 	
@@ -29,8 +29,8 @@ public class GArrayList implements APList {
 	 * update our instance variable.  
 	 */
 	
-	public void add(Object o) {
-		Object[] newList = new Object[data.length + 1];
+	public void add(T o) {
+		T[] newList = (T[]) new Object[data.length + 1];
 		for(int i=0; i<data.length; i++) {
 			newList[i] = data[i];
 		}
@@ -38,9 +38,9 @@ public class GArrayList implements APList {
 		data = newList;
 	}
 	
-	public Object remove(int index) {
-		Object o = data[index];
-		Object[] newList = new Object[data.length-1];
+	public T remove(int index) {
+		T o = data[index];
+		T[] newList = (T[]) new Object[data.length-1];
 		for(int i=0; i<index; i++) {
 			newList[i] = data[i];
 		}

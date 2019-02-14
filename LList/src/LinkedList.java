@@ -1,5 +1,5 @@
 
-public class LinkedList implements APList {
+public class LinkedList<T> implements APList<T> {
 
 	/* The LinkedList class implements the APList
 	 * interface through a series of linked nodes. This
@@ -12,8 +12,8 @@ public class LinkedList implements APList {
 	 * node of the list.  We also keep track of the size
 	 * of the list.
 	 */
-	private Node first;
-	private Node last;
+	private Node<T> first;
+	private Node<T> last;
 	private int size;
 	
 	public LinkedList() {
@@ -28,7 +28,7 @@ public class LinkedList implements APList {
 	 * makes our class more extensible (hence the helper
 	 * method being protected instead of private).  
 	 */
-	protected void addN(Node n) {
+	protected void addN(Node<T> n) {
 		/* Our list may be empty.  If so, we set 
 		 * our first element to n. 
 		 */
@@ -51,9 +51,9 @@ public class LinkedList implements APList {
 	 * matter of writing a smaller wrapper method. The bulk
 	 * of the work is done in our helper method.  
 	 */
-	public void add(Object o) {
+	public void add(T o) {
 		/* First, we wrap the info passed in inside a Node */
-		Node n = new Node(o);
+		Node<T> n = new Node<T>(o);
 		addN(n);
 	}
 	
@@ -61,7 +61,7 @@ public class LinkedList implements APList {
 	 * access to the nth node of the list.  We use protected instead
 	 * of private so that subclasses can use this helper method also. 
 	 */
-	protected Node getN(int index) {
+	protected Node<T> getN(int index) {
 		Node n = first;
 		for(int i=0; i<index; i++) {
 			if(n.next() == null) throw new IndexOutOfBoundsException();
@@ -73,7 +73,7 @@ public class LinkedList implements APList {
 	/* The get method required by the APList interface uses
 	 * our private method to navigate to the appropriate node.
 	 */
-	public Object get(int index) {
+	public T get(int index) {
 		return getN(index).getInfo();
 	}
 	
@@ -83,14 +83,14 @@ public class LinkedList implements APList {
 	 * element. Like the get method, we break this up into a protected
 	 * helper method, and then a public method that does some unwrapping.
 	 */
-	protected Node removeN(int index) {
+	protected Node<T> removeN(int index) {
 		/* We do this at the beginning so that we immediately
 		 * raise an exception if the node requested is out of bounds.
 		 */
 		if(size == 0 || index < 0 || index >= size) throw new IndexOutOfBoundsException();
 		
-		Node toRemove = null;
-		Node previous = null;
+		Node<T> toRemove = null;
+		Node<T> previous = null;
 		if(index == 0) {
 			/* Special case: We're removing the fist node. 
 			 * All we need to do is adjust the first node */
@@ -120,14 +120,14 @@ public class LinkedList implements APList {
 		return toRemove;
 	}
 	
-	public Object remove(int index) {
+	public T remove(int index) {
 		return removeN(index).getInfo();
 	}
 	
 	/* This is a helper method used for subclassing purposes.
 	 * It exposes the node at the end of the list. 
 	 */
-	protected Node getLast() {
+	protected Node<T> getLast() {
 		return last;
 	}
 	

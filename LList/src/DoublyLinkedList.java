@@ -1,5 +1,5 @@
 
-public class DoublyLinkedList extends LinkedList {
+public class DoublyLinkedList<T> extends LinkedList<T> {
 
 	/* Our goal here is to make a class that allows us to
 	 * find the prior element of the list, without having
@@ -16,19 +16,19 @@ public class DoublyLinkedList extends LinkedList {
 	/* The add method needs to work with DoublyLinkedNodes
 	 * instead of singly linked ones, so we need to override it.
 	 */
-	public void add(Object o) {
-		DoublyLinkedNode n = new DoublyLinkedNode(o);
-		n.setPrevious((DoublyLinkedNode)getLast());
+	public void add(T o) {
+		DoublyLinkedNode<T> n = new DoublyLinkedNode<T>(o);
+		n.setPrevious((DoublyLinkedNode<T>)getLast());
 		super.addN(n);
 	}
 	
 	/* We also need to override the remove method, since 
 	 * we need to change the reverse pointers around. 
 	 */
-	public Object remove(int index) {
-		DoublyLinkedNode n = (DoublyLinkedNode) removeN(index);
-		DoublyLinkedNode prev = n.previous();
-		DoublyLinkedNode next = n.next();
+	public T remove(int index) {
+		DoublyLinkedNode<T> n = (DoublyLinkedNode<T>) removeN(index);
+		DoublyLinkedNode<T> prev = n.previous();
+		DoublyLinkedNode<T> next = n.next();
 		if(next != null) next.setPrevious(prev);
 		return n.getInfo();
 	}
@@ -37,8 +37,8 @@ public class DoublyLinkedList extends LinkedList {
 	 * we add getR and getNthFromEnd methods that gets the nth element 
 	 * from the end of the list.
 	 */
-	protected DoublyLinkedNode getR(int index) {
-		DoublyLinkedNode n = (DoublyLinkedNode) getLast();
+	protected DoublyLinkedNode<T> getR(int index) {
+		DoublyLinkedNode<T> n = (DoublyLinkedNode<T>) getLast();
 		for(int i=0; i<index; i++) {
 			if(n.previous() == null) throw new IndexOutOfBoundsException();
 			else n = n.previous();
@@ -46,7 +46,7 @@ public class DoublyLinkedList extends LinkedList {
 		return n;
 	}
 	
-	public Object getNthFromEnd(int index) {
+	public T getNthFromEnd(int index) {
 		return getR(index).getInfo();
 	}
 	
@@ -59,7 +59,7 @@ public class DoublyLinkedList extends LinkedList {
 	 * code inheritted from the LinkedList class.  This method also demonstrtes
 	 * how to use super to call a super class's methods.  
 	 */
-	protected Node getN(int index) {
+	protected Node<T> getN(int index) {
 		int size = size();
 		if(index > size/2) {
 			int rIndex = size - 1- index;

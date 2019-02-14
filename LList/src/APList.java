@@ -1,5 +1,5 @@
 
-public interface APList {
+public interface APList<T> {
 	/* Our interace defines 3 methods.  Interfaces
 	 * only declare method headers, so none are implemented
 	 * here.  Classes that implement the APList interface
@@ -8,7 +8,7 @@ public interface APList {
 	 * objects of different classes interchanably within our
 	 * methods.  
 	 */
-	public void add(Object o);
-	public Object get(int index);
-	public Object remove(int index);
+	public void add(T o);
+	public T get(int index);
+	public T remove(int index);
 }

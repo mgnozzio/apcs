@@ -56,10 +56,10 @@ public class Main {
 		System.out.println("Please be patient.  Tests may take several seconds to run.\n");
 
 		
-		APList ga = new GArrayList();
-		APList ll = new LinkedList();
-		APList dl = new DoublyLinkedList();
-		APList ba = new BetterArrayList();
+		APList<Integer> ga = new GArrayList<Integer> ();
+		APList<Integer>  ll = new LinkedList<Integer> ();
+		APList<Integer>  dl = new DoublyLinkedList<Integer> ();
+		APList<Integer>  ba = new BetterArrayList<Integer> ();
 
 		
 		System.out.println("For GArrayList, the add test took " + timeAddToList(ga) + " seconds.");
@@ -85,7 +85,7 @@ public class Main {
 	
 	public static final int NUM = 200000;
 	
-	public static long timeAddToList(APList l) {
+	public static long timeAddToList(APList<Integer> l) {
 		long t1 = Instant.now().getEpochSecond();
 		for(int i = 0; i<NUM; i++) {
 			l.add(i);
@@ -93,7 +93,7 @@ public class Main {
 		return Instant.now().getEpochSecond() - t1;
 	}
 	
-	public static long timeGetFrom(APList l) {
+	public static long timeGetFrom(APList<Integer> l) {
 		long t1 = Instant.now().getEpochSecond();
 		Random r = new Random();
 		for(int i = 1; i<NUM; i++) {
@@ -103,7 +103,7 @@ public class Main {
 		return Instant.now().getEpochSecond() - t1;
 	}
 	
-	public static long timeRemoveFrom(APList l) {
+	public static long timeRemoveFrom(APList<Integer> l) {
 		long t1 = Instant.now().getEpochSecond();
 		Random r = new Random();
 		for(int i = NUM-1; i>NUM/2; i--) {

@@ -7,19 +7,19 @@
  * (rather than straight inheritance).  Our queue will have
  * a LinkedList instance variable 
  */
-public class Queue {
+public class Queue<T> {
 
-	private LinkedList l;
+	private LinkedList<T> l;
 	
 	public Queue() {
-		l = new LinkedList();
+		l = new LinkedList<T>();
 	}
 	
-	public void add(Object o) {
+	public void add(T o) {
 		l.add(o);
 	}
 	
-	public Object remove() {
+	public T remove() {
 		return l.remove(0);
 	}
 	
