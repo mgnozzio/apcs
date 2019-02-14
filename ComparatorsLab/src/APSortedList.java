@@ -18,47 +18,36 @@ public class APSortedList implements APList{
 	 * 
 	 */
 	
-	private Comparator comp;
-	private APLinkedList data;
-	
 	/* The constructor may take in a comparator that tells us how
 	 * to sort the items.  
 	 */
 	public APSortedList(Comparator c) {
-		this();
-		this.comp = c;
 	}
 	
 	/* Or we can construct a new list without a comparator and
 	 * sort items that are comparable based on their natural ordering.
 	 */
 	public APSortedList() {
-		data = new APLinkedList();
 	}
 	
+	/* This method may prove helpful in wrapping the differing
+	 * behavior between the comparator case and the natural sorting
+	 * case.
+	 */
 	private int compare(Object o1, Object o2) {
-		Comparable c1 = (Comparable)o1;
-		Comparable c2 = (Comparable)o2;
-		if(this.comp != null) return comp.compare(c1,c2);
-		else return c1.compareTo(c2);
+		return -1;
 	}
 	
+	/* At a minimum, you will need to override the add method */
 	public void add(Object o) {
-		int i = 0;
-		int size = data.size();
-		if(size > 0 ) {
-			Node n = data.getN(0);
-			while(i<size && compare(n.getValue(), o) < 0) {
-				n = n.getNext();
-				i = i+1;
-			}
-		}
-		data.add(o,i);
-	};
+	}
 	
-	public Object get(int index) {return data.get(index);};
-	public Object remove(int index) {return data.remove(index);};
-	public int indexOf(Object o) {return data.indexOf(o);};
-	public int size() {return data.size();} ;
-	public String toString() {return data.toString();};
+	/* You may be able to make use of existing code for these
+	 * methods
+	 */
+	public Object get(int index) {return null;}
+	public Object remove(int index) {return null;}
+	public int indexOf(Object o) {return -1;}
+	public int size() {return 0;} 
+	public String toString() {return "Implement me";}
 }

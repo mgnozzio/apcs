@@ -26,7 +26,6 @@ public class Main {
 			l.add(i);
 		}
 		System.out.println("Testing APSortedList(r): "+l+": "+(l.indexOf(7)==3));
-
 		
 	}
 	

@@ -80,13 +80,6 @@ public class APLinkedList implements APList {
 	
 	public int indexOf(Object o) {
 		// TODO:  Implement this method using sequential search
-		Node n = first;
-		int i = 0;
-		while(i<size) {
-			if (n.getValue().equals(o)) return i;
-			i++;
-			n = n.getNext();
-		}
 		return -1;
 	}
 	

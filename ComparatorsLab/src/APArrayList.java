@@ -61,9 +61,6 @@ public class APArrayList implements APList {
 	
 	public int indexOf(Object o){
 		// TODO: Implement using sequential search
-		for(int i=0; i<size; i++) {
-			if(o.equals(data[i])) return i;
-		}
 		return -1;
 	}
 	
