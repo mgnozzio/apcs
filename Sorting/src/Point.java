@@ -23,9 +23,6 @@ public class Point implements Comparable<Point> {
 		return ("("+x+","+y+")");
 	}
 	
-	/* TODO: Implement the compare_to method so that points are sorted
-	 * according to their x-coordinate
-	 */
 	public int compareTo(Point p) {
 		return Double.compare(this.x, p.x);
 	}
